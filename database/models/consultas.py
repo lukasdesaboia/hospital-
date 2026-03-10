@@ -20,3 +20,23 @@ def consultas_por_medico():
         print(f"{r[0]} - Paciente: {r[1]}")
 
     conn.close()
+#
+def historico_paciente():
+
+    cpf = input("CPF do paciente: ")
+
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT data, descricao
+    FROM prontuarios
+    WHERE cpf_paciente=?
+    """, (cpf,))
+
+    registros = cursor.fetchall()
+
+    for r in registros:
+        print(f"{r[0]} - {r[1]}")
+
+    conn.close()
