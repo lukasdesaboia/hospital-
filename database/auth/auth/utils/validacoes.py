@@ -12,3 +12,11 @@ def validar_cpf(cpf):
     dig2 = (soma * 10 % 11) % 10
 
     return dig1 == int(cpf[9]) and dig2 == int(cpf[10])
+#
+from utils.validacoes import validar_cpf
+
+cpf = input("CPF: ")
+
+if not validar_cpf(cpf):
+    print("CPF inválido")
+    return
